@@ -11,9 +11,9 @@ from wafo.f2py_tools import f2py_call_str
 
 def compile_all():
     f2py_call = f2py_call_str()
-    print('=' * 75)
-    print('compiling cov2mod')
-    print('=' * 75)
+    print '=' * 75
+    print 'compiling cov2mod'
+    print '=' * 75
 
     files = ['dsvdc', 'mregmodule', 'intfcmod']
     compile1_format = 'gfortran -fPIC -c %s.f'

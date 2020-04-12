@@ -172,7 +172,7 @@ def _get_shape(y, shape, axes):
 
 def _get_axes(y, shape, axes):
     if axes is None:
-        axes = list(range(y.ndim))
+        axes = range(y.ndim)
     if len(axes) != len(shape):
         raise ValueError("when given, axes and shape arguments "
                          "have to be of the same length")
@@ -346,7 +346,7 @@ def shiftdim(x, n=None):
     if n is None:
         return x.reshape(no_leading_ones(x.shape))
     elif n >= 0:
-        return x.transpose(np.roll(list(range(x.ndim)), -1 * n))
+        return x.transpose(np.roll(range(x.ndim), -1 * n))
     return x.reshape((1,) * abs(n) + x.shape)
 
 

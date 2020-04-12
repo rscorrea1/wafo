@@ -1,4 +1,4 @@
-
+from __future__ import absolute_import, division
 import numpy as np
 from numpy import (pi, linalg, concatenate, sqrt)
 from scipy.sparse import spdiags
@@ -378,7 +378,7 @@ class _Filter(object):
         for k in range(d):
             z[int((shape[k] + 0.5) / 10) + 1::, ...] = 0
             z = z.reshape(np.roll(shape, -k))
-            z = z.transpose(np.roll(list(range(d)), -1))
+            z = z.transpose(np.roll(range(d), -1))
             # z = shiftdim(z,1);
         return idctn(z)
 
@@ -1194,7 +1194,7 @@ class HampelFilter(object):
     def __call__(self, y, x=None):
         Y = np.atleast_1d(y).ravel()
         if x is None:
-            x = list(range(len(Y)))
+            x = range(len(Y))
         X = np.atleast_1d(x).ravel()
 
         dx = 3 * np.median(np.diff(X)) if self.dx is None else self.dx

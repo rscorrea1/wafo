@@ -18,7 +18,7 @@
 ## Chapter 5 Extreme value analysis
 
 ## Section 5.1 Weibull and Gumbel papers
-
+from __future__ import division
 import numpy as np
 import scipy.interpolate as si
 from wafo.plotbackend import plotbackend as plt

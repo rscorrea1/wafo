@@ -27,7 +27,7 @@ Spreading - Directional spreading function.
 
 """
 
-
+from __future__ import absolute_import, division
 
 import warnings
 from scipy.interpolate import interp1d
@@ -1035,12 +1035,12 @@ class Torsethaugen(ModelSpectrum):
             if (3.6 * sqrt(Hm0) <= Tp & Tp <= 5 * sqrt(Hm0)):
                 print('     Jonswap range')
 
-            print(('Hm0 = %g' % Hm0))
-            print(('Ns, Ms = %g, %g  Nw, Mw = %g, %g' % (Ns, Ms, Nw, Mw)))
-            print(('gammas = %g gammaw = %g' % (gammas, gammaw)))
-            print(('Rps = %g Rpw = %g' % (Rps, Rpw)))
-            print(('Hps = %g Hpw = %g' % (Hps, Hpw)))
-            print(('Tps = %g Tpw = %g' % (Tps, Tpw)))
+            print('Hm0 = %g' % Hm0)
+            print('Ns, Ms = %g, %g  Nw, Mw = %g, %g' % (Ns, Ms, Nw, Mw))
+            print('gammas = %g gammaw = %g' % (gammas, gammaw))
+            print('Rps = %g Rpw = %g' % (Rps, Rpw))
+            print('Hps = %g Hpw = %g' % (Hps, Hpw))
+            print('Tps = %g Tpw = %g' % (Tps, Tpw))
 
         # G0s=Ms/((Ns/Ms)**(-(Ns-1)/Ms)*gamma((Ns-1)/Ms )) #normalizing factor
 
@@ -1526,7 +1526,7 @@ class Spreading(object):
             self._method = methods[m]
         except KeyError:
             msg = 'Unknown method. Got {}, but expected one of {}!'
-            raise ValueError(msg.format(method, str(list(methods.keys()))))
+            raise ValueError(msg.format(method, str(methods.keys())))
 
     def __call__(self, theta, w=1, wc=1):
         spreadfun = self._spreadfun[self.type[0]]
@@ -2124,7 +2124,7 @@ def _test_spreading():
 
 def test_docstrings():
     import doctest
-    print(('Testing docstrings in %s' % __file__))
+    print('Testing docstrings in %s' % __file__)
     doctest.testmod(optionflags=doctest.NORMALIZE_WHITESPACE)
 
 

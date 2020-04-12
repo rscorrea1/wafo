@@ -3,7 +3,7 @@ Created on 3. juni 2011
 
 @author: pab
 '''
-
+from __future__ import absolute_import
 import numpy as np
 from numpy import exp, expm1, inf, nan, pi, hstack, where, atleast_1d, cos, sin
 from .dispersion_relation import w2k, k2w  # @UnusedImport
@@ -585,11 +585,11 @@ def wave_pressure(z, Hm0, h=10000, g=9.81, rho=1028):
 
 def test_docstrings():
     import doctest
-    print(('Testing docstrings in %s' % __file__))
+    print('Testing docstrings in %s' % __file__)
     doctest.testmod(optionflags=doctest.NORMALIZE_WHITESPACE)
 
 
 def main():
-    sensor_type(list(range(21)))
+    sensor_type(range(21))
 if __name__ == '__main__':
     test_docstrings()

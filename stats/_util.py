@@ -1,4 +1,4 @@
-
+from __future__ import division, print_function, absolute_import
 
 import functools
 import operator
@@ -220,21 +220,21 @@ try:
         """
         sig = inspect.signature(func)
         args = [
-            p.name for p in list(sig.parameters.values())
+            p.name for p in sig.parameters.values()
             if p.kind == inspect.Parameter.POSITIONAL_OR_KEYWORD
         ]
         varargs = [
-            p.name for p in list(sig.parameters.values())
+            p.name for p in sig.parameters.values()
             if p.kind == inspect.Parameter.VAR_POSITIONAL
         ]
         varargs = varargs[0] if varargs else None
         varkw = [
-            p.name for p in list(sig.parameters.values())
+            p.name for p in sig.parameters.values()
             if p.kind == inspect.Parameter.VAR_KEYWORD
         ]
         varkw = varkw[0] if varkw else None
         defaults = [
-            p.default for p in list(sig.parameters.values())
+            p.default for p in sig.parameters.values()
             if (p.kind == inspect.Parameter.POSITIONAL_OR_KEYWORD and
                p.default is not p.empty)
         ] or None

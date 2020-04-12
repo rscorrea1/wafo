@@ -5,7 +5,7 @@ Created on 20. jan. 2011
 
 license BSD
 '''
-
+from __future__ import absolute_import, division, print_function
 import warnings
 import numpy as np
 from .plotbackend import plotbackend

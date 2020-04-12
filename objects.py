@@ -12,7 +12,7 @@
 # !/usr/bin/env python
 
 
-
+from __future__ import absolute_import, division
 from wafo.transform.core import TrData
 from wafo.transform.estimation import TransformEstimator
 from wafo.stats import distributions
@@ -1114,7 +1114,7 @@ class TurningPoints(PlotData):
 
         if not any(self.args):
             n = len(self.data)
-            self.args = list(range(0, n))
+            self.args = range(0, n)
         else:
             self.args = ravel(self.args)
         self.data = ravel(self.data)
@@ -1326,7 +1326,7 @@ class TimeSeries(PlotData):
 
         if not any(self.args):
             n = len(self.data)
-            self.args = list(range(0, n))
+            self.args = range(0, n)
 
     def sampling_period(self):
         '''
@@ -2094,10 +2094,10 @@ class TimeSeries(PlotData):
         if vh is None:
             if pdef[0] in ('m', 'M'):
                 vh = 0
-                print(('   The minimum rfc height, h,  is set to: %g' % vh))
+                print('   The minimum rfc height, h,  is set to: %g' % vh)
             else:
                 vh = x.mean()
-                print(('   The level l is set to: %g' % vh))
+                print('   The level l is set to: %g' % vh)
 
         if index is None:
             index = self._default_index(x, vh, wdef, pdef)
@@ -2608,7 +2608,7 @@ class TimeSeries(PlotData):
 
 def test_docstrings():
     import doctest
-    print(('Testing docstrings in %s' % __file__))
+    print('Testing docstrings in %s' % __file__)
     doctest.testmod(optionflags=doctest.NORMALIZE_WHITESPACE)
 
 

@@ -9,9 +9,9 @@ from wafo.f2py_tools import f2py_call_str
 
 def compile_all():
     f2py_call = f2py_call_str()
-    print('=' * 75)
-    print('compiling c_codes')
-    print('=' * 75)
+    print '=' * 75
+    print 'compiling c_codes'
+    print '=' * 75
 
     compile_format = f2py_call + ' %s %s -c'
 

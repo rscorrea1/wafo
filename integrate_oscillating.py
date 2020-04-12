@@ -3,7 +3,7 @@ Created on 20. aug. 2015
 
 @author: pab
 """
-
+from __future__ import division
 from collections import namedtuple
 import warnings
 import numdifftools as nd

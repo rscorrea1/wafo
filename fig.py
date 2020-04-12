@@ -34,7 +34,7 @@ Example
 >>> fig.close('all')
 '''
 
-
+from __future__ import absolute_import, division, print_function
 # import win32api
 import win32gui
 import win32con

@@ -1,4 +1,4 @@
-
+from __future__ import absolute_import
 from scipy.stats._distn_infrastructure import *  # @UnusedWildImport
 from scipy.stats._distn_infrastructure import (_skew,  # @UnusedImport
     _kurtosis,  _ncx2_log_pdf,  # @IgnorePep8 @UnusedImport

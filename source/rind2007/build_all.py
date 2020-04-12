@@ -12,9 +12,9 @@ from wafo.f2py_tools import f2py_call_str
 
 def compile_all():
     f2py_call = f2py_call_str()
-    print('=' * 75)
-    print('compiling rind2007')
-    print('=' * 75)
+    print '=' * 75
+    print 'compiling rind2007'
+    print '=' * 75
 
     files = ['intmodule',  'jacobmod', 'swapmod',
              'fimod', 'rindmod', 'rind71mod']

@@ -1,4 +1,4 @@
-
+from __future__ import division, print_function, absolute_import
 
 import numpy.testing as npt
 import numpy as np
@@ -132,8 +132,8 @@ def check_oth(distfn, arg, supp, msg):
                         atol=1e-10, rtol=1e-10)
 
     median_sf = distfn.isf(0.5, *arg)
-    npt.assertTrue(distfn.sf(median_sf - 1, *arg) > 0.5)
-    npt.assertTrue(distfn.cdf(median_sf + 1, *arg) > 0.5)
+    npt.assert_(distfn.sf(median_sf - 1, *arg) > 0.5)
+    npt.assert_(distfn.cdf(median_sf + 1, *arg) > 0.5)
 
 
 def check_discrete_chisquare(distfn, arg, rvs, alpha, msg):
@@ -159,7 +159,7 @@ def check_discrete_chisquare(distfn, arg, rvs, alpha, msg):
     # construct intervals with minimum mass `wsupp`.
     # intervals are left-half-open as in a cdf difference
     lo = max(distfn.a, -1000)
-    distsupport = range(lo, min(distfn.b, 1000) + 1)
+    distsupport = xrange(lo, min(distfn.b, 1000) + 1)
     last = 0
     distsupp = [lo]
     distmass = []
@@ -185,7 +185,7 @@ def check_discrete_chisquare(distfn, arg, rvs, alpha, msg):
     freq, hsupp = np.histogram(rvs, histsupp)
     chis, pval = stats.chisquare(np.array(freq), len(rvs)*distmass)
 
-    npt.assertTrue(pval > alpha,
+    npt.assert_(pval > alpha,
                 'chisquare - test for %s at arg = %s with pval = %s' %
                 (msg, str(arg), str(pval)))
 
@@ -193,7 +193,7 @@ def check_discrete_chisquare(distfn, arg, rvs, alpha, msg):
 def check_scale_docstring(distfn):
     if distfn.__doc__ is not None:
         # Docstrings can be stripped if interpreter is run with -OO
-        npt.assertTrue('scale' not in distfn.__doc__)
+        npt.assert_('scale' not in distfn.__doc__)
 
 
 if __name__ == "__main__":

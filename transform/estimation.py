@@ -3,7 +3,7 @@ Created on 8. mai 2014
 
 @author: pab
 '''
-
+from __future__ import absolute_import
 from .core import TrData
 from .models import TrHermite, TrOchi, TrLinear
 from ..stats import edf, skew, kurtosis

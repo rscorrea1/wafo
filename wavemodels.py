@@ -260,7 +260,7 @@ def _add_contour_levels(f):
 
 def test_docstrings():
     import doctest
-    print(('Testing docstrings in %s' % __file__))
+    print('Testing docstrings in %s' % __file__)
     doctest.testmod(optionflags=doctest.NORMALIZE_WHITESPACE)
 
 

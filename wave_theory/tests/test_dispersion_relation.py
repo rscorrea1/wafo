@@ -29,7 +29,7 @@ def test_k2w_finite_water_depth_with_negative_k():
 
 
 def test_w2k_infinite_water_depth():
-    vals, k2 = w2k(list(range(4)))
+    vals, k2 = w2k(range(4))
     true_vals = np.array([0., 0.1019368, 0.4077472, 0.91743119])
     assert_allclose(vals, true_vals)
     assert_allclose(k2, 0)
@@ -41,7 +41,7 @@ def test_w2k_infinite_water_depth_with_negative_w():
     assert_allclose(k2, 0)
 
 def test_w2k_finite_water_depth():
-    vals, k2 = w2k(list(range(4)), h=20)
+    vals, k2 = w2k(range(4), h=20)
     true_vals = np.array([0., 0.10503601, 0.40774726, 0.91743119])
     assert_allclose(vals, true_vals)
     assert_allclose(k2, 0)

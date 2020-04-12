@@ -1,4 +1,4 @@
-
+from __future__ import division
 from numpy import round
 from threading import Thread
 from time import sleep
@@ -251,7 +251,7 @@ if __name__ == '__main__':
     wb = Waitbar('Waitbar example')
 #    wb2 = Waitbar2('Waitbar example')
     for i in range(20):
-        print((wb.update(i * 5)))
+        print(wb.update(i * 5))
 #        wb2.update(i)
         sleep(0.1)
     wb.close()

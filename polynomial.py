@@ -17,7 +17,7 @@
 # Licence:     LGPL
 # ------------------------------------------------------------------------
 # !/usr/bin/env python
-
+from __future__ import absolute_import, division, print_function
 import warnings  # @UnusedImport
 from functools import reduce
 from numpy.polynomial import polyutils as pu
@@ -26,7 +26,10 @@ import numpy as np
 from numpy import (newaxis, arange, pi)
 from scipy.fftpack import dct, idct as _idct
 from numpy.lib.polynomial import *  # @UnusedWildImport
-from scipy.interpolate import pade
+try:
+    from scipy.interpolate import pade
+except ImportError:
+    from scipy.misc import pade  # @UnresolvedImport
 __all__ = np.lib.polynomial.__all__
 __all__ = __all__ + ['pade', 'padefit', 'polyreloc', 'polyrescl', 'polytrim',
                      'poly2hstr', 'poly2str', 'polyshift', 'polyishift',
@@ -1306,7 +1309,7 @@ def chebfit_dct(f, n=(10, ), domain=None):
     def _zip(n, domain):
         if domain is None:
             domain = (-1, 1) * len(n)
-        return list(zip(n, np.atleast_2d(domain).reshape((-1, 2))))
+        return zip(n, np.atleast_2d(domain).reshape((-1, 2)))
 
     def _init_ck(f, n, domain):
         n = np.atleast_1d(n)
@@ -1599,7 +1602,7 @@ class Cheb1d(object):
 
     def __init__(self, ck, a=-1, b=1, kind=1):
         if isinstance(ck, Cheb1d):
-            for key in list(ck.__dict__.keys()):
+            for key in ck.__dict__.keys():
                 self.__dict__[key] = ck.__dict__[key]
             return
         cki = trim_zeros(np.atleast_1d(ck), 'b')

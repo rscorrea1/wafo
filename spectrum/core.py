@@ -1,4 +1,4 @@
-
+from __future__ import absolute_import, division
 import warnings
 import os
 import numpy as np
@@ -750,8 +750,8 @@ class SpecData1D(PlotData):
         if self.freqtype in 'f':
             checkdt *= 2 * pi
         if (checkdt < 2. ** -16 / dt):
-            print(('Step dt = %g in computation of the density is ' +
-                  'too small.' % dt))
+            print('Step dt = %g in computation of the density is ' +
+                  'too small.' % dt)
             print('The computed covariance (by FFT(2^K)) may differ from the')
             print('theoretical. Solution:')
             raise ValueError('use larger dt or sparser grid for spectrum.')
@@ -1176,8 +1176,8 @@ class SpecData1D(PlotData):
                 # figtile
             # end
 
-            print(('Iteration : %d, Hw12 : %g  Hw12/max_spec : %g' %
-                  (ix, maxHw12, (maxHw12 / max_spec))))
+            print('Iteration : %d, Hw12 : %g  Hw12/max_spec : %g' %
+                  (ix, maxHw12, (maxHw12 / max_spec)))
             if (maxHw12 < max_spec * tolerance) and (Hw1[-1] < Hw2[-1]):
                 break
             # end
@@ -1265,7 +1265,7 @@ class SpecData1D(PlotData):
         # transform reference level into Gaussian level
         u = g.dat2gauss(utc)
         if verbose:
-            print(('The level u for Gaussian process = %g' % u))
+            print('The level u for Gaussian process = %g' % u)
 
         tn, Nt = paramt[1:]
         t = linspace(0, tn / A, Nt)  # normalized times
@@ -1679,7 +1679,7 @@ class SpecData1D(PlotData):
         # transform reference level into Gaussian level
         u = g.dat2gauss(utc)
         if verbose:
-            print(('The level u for Gaussian process = %g' % u))
+            print('The level u for Gaussian process = %g' % u)
 
         t0, tn, Nt = paramt
         t = np.linspace(0, tn / A, Nt)  # normalized times
@@ -2964,8 +2964,8 @@ class SpecData1D(PlotData):
         f_limit_up = df * nmax
         f_limit_lo = df * nmin
         if verbose:
-            print(('2nd order frequency Limits = %g,%g' %
-                  (f_limit_lo, f_limit_up)))
+            print('2nd order frequency Limits = %g,%g' %
+                  (f_limit_lo, f_limit_up))
 
 # if nargout>3,
 # #compute the sum and frequency effects separately
@@ -3264,7 +3264,7 @@ class SpecData1D(PlotData):
                 g = ts.trdata(method, **opt)[0]
                 test1.append(g.dist2gauss())
             if verbose:
-                print(('finished %d of %d ' % (ix + 1, rep)))
+                print('finished %d of %d ' % (ix + 1, rep))
 
         if rep > 1:
             xs = acf.sim(ns=ns, cases=np.remainder(cases, rep))

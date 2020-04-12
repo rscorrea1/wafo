@@ -14,7 +14,7 @@ note : Memorandum string.
 date : Date and time of creation or change.
 '''
 
-
+from __future__ import division, absolute_import
 import warnings
 import numpy as np
 from numpy import (zeros, ones, sqrt, inf, where, nan,

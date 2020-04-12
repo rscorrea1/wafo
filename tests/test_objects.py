@@ -24,7 +24,7 @@ class TestTimeSeries(TestCase):
 
     def test_tospecdata(self):
         S = self.ts.tospecdata(L=150)
-        print((S.data[:10].tolist()))
+        print(S.data[:10].tolist())
         assert_array_almost_equal(S.data[:10],
                                   [0.0050789888306202345, 0.0049411187454784225,
                                    0.004553923924951667, 0.003990722577978725,
@@ -58,10 +58,10 @@ class TestTimeSeries(TestCase):
 
         # Less weight on the ends
         g2, _gemp = ts.trdata(method='nonlinear', gvar=[3.5, 0.5, 3.5])
-        self.assertTrue(1.2 < S.tr.dist2gauss() < 1.6)
-        self.assertTrue(1.65 < g0.dist2gauss() < 2.05)
-        self.assertTrue(0.54 < g1.dist2gauss() < 0.95)
-        self.assertTrue(1.5 < g2.dist2gauss() < 1.9)
+        self.assert_(1.2 < S.tr.dist2gauss() < 1.6)
+        self.assert_(1.65 < g0.dist2gauss() < 2.05)
+        self.assert_(0.54 < g1.dist2gauss() < 0.95)
+        self.assert_(1.5 < g2.dist2gauss() < 1.9)
 
     def test_timeseries_wave_periods(self):
         true_t = ([-0.69, -0.86, -1.05],
@@ -108,7 +108,7 @@ class TestTimeSeries(TestCase):
         for wdef, truth in zip(wdefs, true_t2):
             pdef = '{0}2{0}'.format(wdef[0].lower())
             T, _ix = ts.wave_periods(vh=0.0, pdef=pdef, wdef=wdef)
-            print((T[:3]))
+            print(T[:3])
             assert_array_almost_equal(T[:3], truth)
 
 

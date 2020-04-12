@@ -1,4 +1,4 @@
-
+from __future__ import absolute_import, division, print_function
 import warnings
 from wafo.graphutil import cltext
 from wafo.plotbackend import plotbackend as plt

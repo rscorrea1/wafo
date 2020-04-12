@@ -3,7 +3,7 @@ Created on 31. aug. 2015
 
 @author: pab
 '''
-
+from __future__ import division
 import numpy as np
 import mpmath as mp
 import unittest
@@ -24,7 +24,7 @@ class TestBasis(unittest.TestCase):
     def test_poly(self):
         t = 1
         vals = [poly_basis.derivative(t, k, n=1) for k in range(3)]
-        assert_allclose(vals, list(range(3)))
+        assert_allclose(vals, range(3))
         vals = [poly_basis.derivative(0, k, n=1) for k in range(3)]
         assert_allclose(vals, [0, 1, 0])
         vals = [poly_basis.derivative(0, k, n=2) for k in range(3)]
@@ -107,7 +107,7 @@ class LevinQuadrature(unittest.TestCase):
             quad = quadfun(f, g, dg,  a=a, b=b, full_output=True)
             val, info = quad(omega)
             assert_allclose(val, true_val)
-            self.assertTrue(info.error_estimate < 1e-11)
+            self.assert_(info.error_estimate < 1e-11)
             # assert_allclose(info.n, 9)
 
     def test_exp_jw_t(self):
@@ -131,7 +131,7 @@ class LevinQuadrature(unittest.TestCase):
             val, info = quad(omega)
 
             assert_allclose(val, true_val)
-            self.assertTrue(info.error_estimate < 1e-12)
+            self.assert_(info.error_estimate < 1e-12)
             # assert_allclose(info.n, 21)
 
     def test_I1_1_p_ln_x_exp_jw_xlnx(self):
@@ -154,7 +154,7 @@ class LevinQuadrature(unittest.TestCase):
             val, info = quad(omega)
 
             assert_allclose(val, true_val)
-            self.assertTrue(info.error_estimate < 1e-10)
+            self.assert_(info.error_estimate < 1e-10)
             # assert_allclose(info.n, 11)
 
     def test_I4_ln_x_exp_jw_30x(self):
@@ -184,7 +184,7 @@ class LevinQuadrature(unittest.TestCase):
             quad = quadfun(f, g, dg, a, b, full_output=True)
             val, info = quad(omega)
             assert_allclose(val, true_val)
-            self.assertTrue(info.error_estimate < 1e-5)
+            self.assert_(info.error_estimate < 1e-5)
 
     def test_I5_coscost_sint_exp_jw_sint(self):
         a = 0
@@ -214,7 +214,7 @@ class LevinQuadrature(unittest.TestCase):
             val, info = quad(omega)
 
             assert_allclose(val, true_val)
-            self.assertTrue(info.error_estimate < 1e-9)
+            self.assert_(info.error_estimate < 1e-9)
 
     def test_I6_exp_jw_td_1_m_t(self):
         a = 0
@@ -241,7 +241,7 @@ class LevinQuadrature(unittest.TestCase):
             val, info = quad(omega)
 
             assert_allclose(val, true_val)
-            self.assertTrue(info.error_estimate < 1e-10)
+            self.assert_(info.error_estimate < 1e-10)
 
     def test_I8_cos_47pix2d4_exp_jw_x(self):
         def f(t):
@@ -290,7 +290,7 @@ class LevinQuadrature(unittest.TestCase):
             val, info = quad(omega)
 
             assert_allclose(val, true_val)
-            self.assertTrue(info.error_estimate < 1e-8)
+            self.assert_(info.error_estimate < 1e-8)
 
     def test_exp_zdcos2t_dcos2t_exp_jw_cos_t_b_dcos2t(self):
         x1 = 20
@@ -372,7 +372,7 @@ class LevinQuadrature(unittest.TestCase):
             plt.hlines(0, a, b)
             plt.axis([a, b, -5, 5])
             plt.title('beta=%g' % beta)
-            print((np.trapz(f2, t)))
+            print(np.trapz(f2, t))
             plt.legend(loc='best', framealpha=0.5)
             plt.show('hold')
         # true_val = 0.00253186684281+0.004314054498j
@@ -382,7 +382,7 @@ class LevinQuadrature(unittest.TestCase):
             quad = quadfun(f, g, dg, a, b, precision=10, endpoints=False,
                            full_output=True)
             val, _info = quad(omega, beta, z1)  # @UnusedVariable
-            print((quadfun.__name__))
+            print(quadfun.__name__)
             assert_allclose(val, complex(true_val), rtol=1e-3)
             # s = 1 if s<=1 else s//2
             pass

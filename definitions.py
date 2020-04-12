@@ -56,7 +56,7 @@ def wave_amplitudes():
     --------
     waves, crossings, turning_points
     """
-    print((wave_amplitudes.__doc__))
+    print(wave_amplitudes.__doc__)
 
 
 def crossings():
@@ -101,7 +101,7 @@ def crossings():
     --------
     wave_periods, waves, turning_points, findcross, findtp
     """
-    print((crossings.__doc__))
+    print(crossings.__doc__)
 
 
 def cycle_pairs():
@@ -119,7 +119,7 @@ def cycle_pairs():
     --------
     turning_points
     """
-    print((cycle_pairs.__doc__))
+    print(cycle_pairs.__doc__)
 
 
 def wave_periods():
@@ -208,7 +208,7 @@ def wave_periods():
     crossings,
     turning_points
     """
-    print((wave_periods.__doc__))
+    print(wave_periods.__doc__)
 
 
 def turning_points():
@@ -245,7 +245,7 @@ def turning_points():
     findtp
 
     """
-    print((turning_points.__doc__))
+    print(turning_points.__doc__)
 
 
 def waves():
@@ -303,7 +303,7 @@ def waves():
     findtc,
     findcross
     """
-    print((waves.__doc__))
+    print(waves.__doc__)
 
 if __name__ == '__main__':
     import doctest

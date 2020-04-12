@@ -7,7 +7,7 @@ Distributions
 Author:  Per A. Brodtkorb 2008
 """
 
-
+from __future__ import division, absolute_import
 import warnings
 from scipy.stats import rv_continuous
 from scipy.stats._distn_infrastructure import check_random_state

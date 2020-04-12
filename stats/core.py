@@ -1,4 +1,4 @@
-
+from __future__ import division
 import warnings
 from wafo.containers import PlotData
 from wafo.misc import findextrema
@@ -547,7 +547,7 @@ def _find_ok_peaks(y, t, t_min):
 
     tis = t[i]
     o_order = zeros(num_y, dtype=int)
-    o_order[i] = list(range(num_y))  # indices to the variables original location
+    o_order[i] = range(num_y)  # indices to the variables original location
 
     is_too_close = zeros(num_y, dtype=bool)
 
@@ -917,17 +917,17 @@ class RegLogit(object):
                     tb = tbold - \
                         np.linalg.lstsq(d2l - epsilon * np.eye(d2l.shape), dl)
                     [dev, dl, d2l] = self.loglike(tb, y, X, z, z1)
-                    print(('epsilon %g' % epsilon))
+                    print('epsilon %g' % epsilon)
                     # end %while
                     # end else
             #[dl, d2l] = logistic_regression_derivatives (X, z, z1, g, g1, p);
             if (self.verbose > 1):
 
-                print(('Iter: %d,  Deviance: %8.6f', iter, dev))
+                print('Iter: %d,  Deviance: %8.6f', iter, dev)
                 print('First derivative')
                 print(dl)
                 print('Eigenvalues of second derivative')
-                print((np.linalg.eig(d2l)[0].T))
+                print(np.linalg.eig(d2l)[0].T)
                 # end
                 # end
             stop = np.abs(
@@ -1067,13 +1067,13 @@ class RegLogit(object):
         else:
             localstat = abs(devL - devs) / disprsn
             localpvalue = 1 - _cdfchi2(localstat, pmq)
-            print(('Model    DF      Residual deviance      Chi2-stat  ' +
-                  '      Pr(>Chi2)'))
+            print('Model    DF      Residual deviance      Chi2-stat  ' +
+                  '      Pr(>Chi2)')
         # end
 
-        print(('Small    %d       %12.4f       %12.4f    %12.4f' %
-              (dfs, devs, localstat, localpvalue)))
-        print(('Full     %d       %12.4f' % (dfL, devL)))
+        print('Small    %d       %12.4f       %12.4f    %12.4f' %
+              (dfs, devs, localstat, localpvalue))
+        print('Full     %d       %12.4f' % (dfL, devL))
         print(' ')
 
         return localpvalue
@@ -1091,16 +1091,16 @@ class RegLogit(object):
             localstat = abs(
                 self.deviance_null - self.deviance) / self.dispersionfit
             localpvalue = 1 - _cdfchi2(localstat, self.numvar - 1)
-            print(('Model    DF      Residual deviance      Chi2-stat' +
-                  '        Pr(>Chi2)'))
+            print('Model    DF      Residual deviance      Chi2-stat' +
+                  '        Pr(>Chi2)')
         # end
 
-        print(('Null     %d       %12.4f       %12.4f    %12.4f' %
-              (self.df_null, self.deviance_null, localstat, localpvalue)))
-        print(('Full     %d       %12.4f' % (self.df, self.deviance)))
+        print('Null     %d       %12.4f       %12.4f    %12.4f' %
+              (self.df_null, self.deviance_null, localstat, localpvalue))
+        print('Full     %d       %12.4f' % (self.df, self.deviance))
         print(' ')
 
-        print((' R2 =  %2.4f,     R2adj = %2.4f' % (self.R2, self.R2adj)))
+        print(' R2 =  %2.4f,     R2adj = %2.4f' % (self.R2, self.R2adj))
         print(' ')
         return localpvalue
 
@@ -1108,15 +1108,15 @@ class RegLogit(object):
         txtlink = self.link
 
         print('Call:')
-        print(('reglogit(formula = %s(Pr(grp(y)<=i)) ~ theta_i+beta*x, family = %s)' %
-            (txtlink, self.family)))
+        print('reglogit(formula = %s(Pr(grp(y)<=i)) ~ theta_i+beta*x, family = %s)' %
+            (txtlink, self.family))
         print(' ')
         print('Deviance Residuals:')
         m, q1, me, q3, M = np.percentile(
             self.residualD, q=[0, 25, 50, 75, 100])
         print('    Min       1Q         Median       3Q        Max  ')
-        print(('%2.4f     %2.4f     %2.4f     %2.4f     %2.4f' %
-              (m, q1, me, q3, M)))
+        print('%2.4f     %2.4f     %2.4f     %2.4f     %2.4f' %
+              (m, q1, me, q3, M))
         print(' ')
         print(' Coefficients:')
         if False:  # %options.estdispersn
@@ -1129,25 +1129,25 @@ class RegLogit(object):
         e, s, z, p = (self.params, self.params_std, self.params_tstat,
                       self.params_pvalue)
         for i in range(self.numk):
-            print((
+            print(
                 'theta_%d         %2.4f        %2.4f        %2.4f        %2.4f' %
-                (i, e[i], s[i], z[i], p[i])))
+                (i, e[i], s[i], z[i], p[i]))
 
         for i in range(self.numk, self.numvar):
-            print((
+            print(
                 ' beta_%d         %2.4f        %2.4f        %2.4f        %2.4f\n' %
-                (i - self.numk, e[i], s[i], z[i], p[i])))
+                (i - self.numk, e[i], s[i], z[i], p[i]))
 
         print(' ')
-        print(('(Dispersion parameter for %s family taken to be %2.2f)' %
-              (self.family, self.dispersionfit)))
+        print('(Dispersion parameter for %s family taken to be %2.2f)' %
+              (self.family, self.dispersionfit))
         print(' ')
         if True:  # %options.constant
-            print(('    Null deviance: %2.4f  on %d  degrees of freedom' %
-                  (self.deviance_null, self.df_null)))
+            print('    Null deviance: %2.4f  on %d  degrees of freedom' %
+                  (self.deviance_null, self.df_null))
         # end
-        print(('Residual deviance: %2.4f  on %d  degrees of freedom' %
-              (self.deviance, self.df)))
+        print('Residual deviance: %2.4f  on %d  degrees of freedom' %
+              (self.deviance, self.df))
 
         self.anode()
 

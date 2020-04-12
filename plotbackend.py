@@ -15,7 +15,7 @@ if False:
 else:
     try:
         from matplotlib import pyplot as plotbackend
-        #plotbackend.interactive(True)
+        plotbackend.interactive(True)
         if verbose:
             print('wafo: plotbackend is set to matplotlib.pyplot')
     except ImportError:

@@ -22,7 +22,7 @@ def plot_varying_symbols(x, y, color='red', size=5):
     """
     markers = itertools.cycle(MARKERS)
     for q, p in zip(x, y):
-        plt.plot(q, p, marker=next(markers), linestyle='', color=color,
+        plt.plot(q, p, marker=markers.next(), linestyle='', color=color,
                  markersize=size)
 
 
@@ -169,8 +169,8 @@ if sig_cp is not None:
     plt.semilogy
     plt.bar(bin_edges[:-1], hist, width=stress_range[1] / n_bins)
 
-    print(("damage min/max : {}".format(mM_rfc.damage([beta], K1))))
+    print("damage min/max : {}".format(mM_rfc.damage([beta], K1)))
 
     damage_rfc = K1 * np.sum(sig_cp[:, 0] ** beta)
-    print(("damage rfc : {}".format(damage_rfc)))
+    print("damage rfc : {}".format(damage_rfc))
 plt.show('hold')

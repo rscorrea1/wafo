@@ -1,4 +1,4 @@
-
+from __future__ import division, print_function, absolute_import
 
 import warnings
 
@@ -245,7 +245,7 @@ def check_sample_mean(sm, v, n, popmean):
     prob = stats.betai(0.5*df, 0.5, df/(df+t*t))
 
     # return t,prob
-    npt.assertTrue(prob > 0.01, 'mean fail, t,prob = %f, %f, m, sm=%f,%f' %
+    npt.assert_(prob > 0.01, 'mean fail, t,prob = %f, %f, m, sm=%f,%f' %
                 (t, prob, popmean, sm))
 
 
@@ -255,7 +255,7 @@ def check_sample_var(sv, n, popvar):
     df = n-1
     chi2 = (n-1)*popvar/float(popvar)
     pval = stats.distributions.chi2.sf(chi2, df) * 2
-    npt.assertTrue(pval > 0.01, 'var fail, t, pval = %f, %f, v, sv=%f, %f' %
+    npt.assert_(pval > 0.01, 'var fail, t, pval = %f, %f, v, sv=%f, %f' %
                 (chi2, pval, popvar, sv))
 
 
@@ -336,7 +336,7 @@ def check_distribution_rvs(dist, args, alpha, rvs):
     D, pval = stats.kstest(rvs, dist, args=args, N=1000)
     if (pval < alpha):
         D, pval = stats.kstest(dist, '', args=args, N=1000)
-        npt.assertTrue(pval > alpha, "D = " + str(D) + "; pval = " + str(pval) +
+        npt.assert_(pval > alpha, "D = " + str(D) + "; pval = " + str(pval) +
                     "; alpha = " + str(alpha) + "\nargs = " + str(args))
 
 
@@ -354,7 +354,7 @@ def check_loc_scale(distfn, arg, m, v, msg):
 def check_ppf_private(distfn, arg, msg):
     # fails by design for truncnorm self.nb not defined
     ppfs = distfn._ppf(np.array([0.1, 0.5, 0.9]), *arg)
-    npt.assertTrue(not np.any(np.isnan(ppfs)), msg + 'ppf private is nan')
+    npt.assert_(not np.any(np.isnan(ppfs)), msg + 'ppf private is nan')
 
 
 if __name__ == "__main__":

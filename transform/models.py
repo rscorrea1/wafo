@@ -6,7 +6,7 @@ TrOchi
 TrLinear
 '''
 # !/usr/bin/env python
-
+from __future__ import division, absolute_import
 from scipy.optimize import brentq  # @UnresolvedImport
 from numpy import (sqrt, atleast_1d, abs, imag, sign, where, cos, arccos, ceil,
                    expm1, log1p, pi)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+from __future__ import absolute_import, division
 import numpy as np
 # import scipy.sparse.linalg  # @UnusedImport
 import scipy.sparse as sparse
@@ -92,7 +92,7 @@ def savitzky_golay(y, window_size, order, deriv=0):
     order = np.abs(np.int(order))
 
     _check_window_size(window_size, min_size=order + 2)
-    order_range = list(range(order + 1))
+    order_range = range(order + 1)
     half_window = (window_size - 1) // 2
     # precompute coefficients
     b = np.mat([[k ** i for i in order_range]
@@ -1335,7 +1335,7 @@ def test_pp():
 
 def test_docstrings():
     import doctest
-    print(('Testing docstrings in {}'.format(__file__)))
+    print('Testing docstrings in {}'.format(__file__))
     doctest.testmod(optionflags=doctest.NORMALIZE_WHITESPACE)
 
 

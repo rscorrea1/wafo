@@ -3,7 +3,7 @@ Created on 2. jan. 2017
 
 @author: pab
 """
-
+from __future__ import absolute_import, division, print_function
 import scipy.stats as st
 import numpy as np
 import warnings

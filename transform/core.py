@@ -1,6 +1,6 @@
 '''
 '''
-
+from __future__ import division
 from numpy import trapz, sqrt, linspace  # @UnresolvedImport
 
 from wafo.containers import PlotData

@@ -45,7 +45,7 @@ plt.show()
 #! crossing intensity curve, as follows.
 T = xx[:, 0].max() - xx[:, 0].min()
 f0 = np.interp(0, lc.args, lc.data, 0) / T  # zero up-crossing frequency
-print(('f0 = %g' % f0))
+print('f0 = %g' % f0)
 
 #! Turningpoints and irregularity factor
 #!----------------------------------------
@@ -53,7 +53,7 @@ print(('f0 = %g' % f0))
 fm = len(tp.data) / (2 * T)   # frequency of maxima
 alfa = f0 / fm                # approx Tm24/Tm02
 
-print(('fm = %g, alpha = %g, ' % (fm, alfa)))
+print('fm = %g, alpha = %g, ' % (fm, alfa))
 
 #! Visually examine data
 #!------------------------
@@ -100,7 +100,7 @@ plt.show()
 #! Calculate moments
 #!-------------------
 mom, text = S.moment(nr=4)
-print(('sigma = %g, m0 = %g' % (sa, np.sqrt(mom[0]))))
+print('sigma = %g, m0 = %g' % (sa, np.sqrt(mom[0])))
 
 #! Section 2.2.1 Random functions in Spectral Domain - Gaussian processes
 #!--------------------------------------------------------------------------

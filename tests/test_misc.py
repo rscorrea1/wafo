@@ -98,8 +98,8 @@ def test_detrendma():
     y = exp(x) + 0.1 * cos(20 * 2 * pi * x)
     y0 = detrendma(y, 20)
     tr = y - y0
-    print((y0[::40]))
-    print((tr[::40]))
+    print(y0[::40])
+    print(tr[::40])
     assert_array_almost_equal(
         y0[::40], [-0.01058152,  0.09386986,  0.0903801,   0.08510006,
                    0.07803487])
@@ -288,7 +288,7 @@ def test_common_shape():
 def test_argsreduce():
     A = np.reshape(linspace(0, 19, 20), (4, 5))
     B = 2
-    C = list(range(5))
+    C = range(5)
     cond = np.ones(A.shape)
     [_A1, B1, _C1] = argsreduce(cond, A, B, C)
     assert_equal(B1.shape, (20,))
@@ -305,7 +305,7 @@ def test_argsreduce():
 
 
 def test_stirlerr():
-    assert_array_almost_equal(stirlerr(list(range(5))),
+    assert_array_almost_equal(stirlerr(range(5)),
                               np.array([np.inf, 0.08106147, 0.0413407,
                                         0.02767793, 0.02079067]))
 
@@ -438,7 +438,7 @@ def test_tranproc():
     tr = wtm.TrHermite()
     x = linspace(-5, 5, 501)
     g = tr(x)
-    y0, y1 = tranproc(x, g, list(range(5)), ones(5))
+    y0, y1 = tranproc(x, g, range(5), ones(5))
     assert_array_almost_equal(
         y0,
         np.array([0.02659612, 1.00115284, 1.92872532,
@@ -678,14 +678,14 @@ class TestSub2index2Sub(TestCase):
         trueval = a[1, 2, 3]
         order = 'C'
         i = sub2index(shape, 1, 2, 3, order=order)
-        self.assertEqual(i, 23)
+        self.assertEquals(i, 23)
 
         val = a.ravel(order)[i]
-        self.assertEqual(val, trueval)
+        self.assertEquals(val, trueval)
 
         sub = index2sub(shape, i, order=order)
         for j, true_sub_j in enumerate([1, 2, 3]):
-            self.assertEqual(sub[j].tolist(), true_sub_j)
+            self.assertEquals(sub[j].tolist(), true_sub_j)
 
 if __name__ == '__main__':
     run_module_suite()

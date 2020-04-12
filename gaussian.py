@@ -1,4 +1,4 @@
-
+from __future__ import absolute_import
 from numpy import (r_, minimum, maximum, atleast_1d, atleast_2d, mod, ones,
                    floor, random, eye, nonzero, where, repeat, sqrt, exp, inf,
                    diag, zeros, sin, arcsin, nan)

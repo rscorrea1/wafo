@@ -40,31 +40,31 @@ class TestSpectra(TestCase):
         true_vals = np.array([0.,  1.19989709,  0.05819794,  0.0093541])
         self.assertListAlmostEqual(vals, true_vals)
 
-        vals = S.wind(list(range(4)))
+        vals = S.wind(range(4))
         true_vals = np.array([0.,  1.13560528,  0.05529849,  0.00888989])
         self.assertListAlmostEqual(vals, true_vals)
 
-        vals = S.swell(list(range(4)))
+        vals = S.swell(range(4))
         true_vals = np.array([0.,  0.0642918,  0.00289946,  0.00046421])
         self.assertListAlmostEqual(vals, true_vals)
 
     def test_ochihubble(self):
 
         S = OchiHubble(par=2)
-        vals = S(list(range(4)))
+        vals = S(range(4))
         true_vals = np.array([0.,  0.90155636,  0.04185445,  0.00583207])
         self.assertListAlmostEqual(vals, true_vals)
 
     def test_mccormick(self):
 
         S = McCormick(Hm0=6.5, Tp=10)
-        vals = S(list(range(4)))
+        vals = S(range(4))
         true_vals = np.array([0.,  1.87865908,  0.15050447,  0.02994663])
         self.assertListAlmostEqual(vals, true_vals)
 
     def test_wallop(self):
         S = Wallop(Hm0=6.5, Tp=10)
-        vals = S(list(range(4)))
+        vals = S(range(4))
         true_vals = np.array([0.00000000e+00, 9.36921871e-01, 2.76991078e-03,
                               7.72996150e-05])
         self.assertListAlmostEqual(vals, true_vals)

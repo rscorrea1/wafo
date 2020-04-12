@@ -82,7 +82,7 @@ Contents.m              : Contents file for Matlab
 
 
 '''
-
+from __future__ import absolute_import, division
 import numpy as np
 from numpy.fft import fft
 from wafo.dctpack import dct

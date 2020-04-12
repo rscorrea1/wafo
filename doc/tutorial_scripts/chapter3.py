@@ -31,8 +31,8 @@ Tc, ixc = ts.wave_periods(vh=0, pdef='u2d', wdef='tw', rate=8)
 #!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import wafo.kdetools as wk
 plt.clf()
-print((Tc.mean()))
-print((Tc.max()))
+print(Tc.mean())
+print(Tc.max())
 
 t = np.linspace(0.01,8,200);
 ftc = wk.TKDE(Tc, L2=0, inc=128)
@@ -98,9 +98,9 @@ plt.clf()#
 fac = wk.TKDE(Ac,L2=L2)(np.linspace(0.01,3,200), output='plot')
 fac.plot()
 # wafostamp([],'(ER)')
-print((fac.integrate(a=0.01, b=3)))
-print((fac.integrate()))
-print(('Block = 8'), end=' ')
+print(fac.integrate(a=0.01, b=3))
+print(fac.integrate())
+print('Block = 8'),
 # pause(pstate)
 
 #!#! Empirical crest height CDF
